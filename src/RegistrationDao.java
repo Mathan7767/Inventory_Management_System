@@ -129,7 +129,7 @@ public class RegistrationDao
 	
 	public static boolean checkUser(User user,String role)
 	{
-		String status=null;
+	
 		try
 		{
 			Connection connection=getConnection();
@@ -153,7 +153,7 @@ public class RegistrationDao
 	
 	public static String validateUser(User user,HttpServletRequest request)
 	{
-		String query="select * from "+user.getRole()+" where id='"+user.getId();
+		String query="select * from "+user.getRole()+" where id='"+user.getId()+"'";
 		String status=null;
 		HttpSession session=request.getSession();
 		
@@ -165,12 +165,13 @@ public class RegistrationDao
 			ResultSet rs=statement.executeQuery(query);
 			if(rs.next())
 			{
+				System.out.println(user.getPassword()+" "+rs.getString("password"));
 				if(user.getPassword().equals(rs.getString("password")))
 				{
 					session.setAttribute("name", rs.getString("name"));
 					session.setAttribute("email", rs.getString("email"));
 					
-					return "Welcome "+user.getName();
+					return "Welcome "+session.getAttribute("name");
 				}
 				else
 					return "Password Dosen't Match";
