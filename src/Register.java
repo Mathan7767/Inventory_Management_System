@@ -53,14 +53,14 @@ public class Register extends HttpServlet {
   		String status=null;
   		HttpSession session1=request.getSession();
   		
-  		registerDao.addUser(user);
+  		RegistrationDao.addUser(user);
   		if(role.equalsIgnoreCase("customer"))
   		{
-  			status=registerDao.addCustomer((Customer)user);
+  			status=RegistrationDao.addCustomer((Customer)user);
   		}
   		else if(role.equalsIgnoreCase("supplier"))
   		{
-  			status=registerDao.addSuplier((Supplier)user);
+  			status=RegistrationDao.addSuplier((Supplier)user);
   		}
   		
   		

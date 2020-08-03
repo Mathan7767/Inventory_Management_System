@@ -4,7 +4,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class registerDao
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+public class RegistrationDao
 {
 	public static Connection getConnection()
 	{
@@ -35,11 +38,11 @@ public class registerDao
 			/*
 			 * String createquery="create table if not exists customers\r\n" +
 			 * "    ( customerid varchar(20) not null,\r\n" +
-			 * "    customername varchar(20) not null,\r\n" +
-			 * "    customeremail varchar(20) not null,\r\n" +
+			 * "    name varchar(20) not null,\r\n" +
+			 * "    email varchar(20) not null,\r\n" +
 			 * "    password varchar(50) not null,\r\n" +
 			 * "    foreign key(customerid) references user(id));";
-			 */		String query="insert into customers values(?,?,?,?)";
+			 */		String query="insert into customer values(?,?,?,?)";
 			try
 			{
 				Connection connection=getConnection();
@@ -71,13 +74,13 @@ public class registerDao
 	
 			/*
 			 * String createQuery="create table if not exists suppliers (\r\n" +
-			 * "    supplierid varchar(20) not null,\r\n" +
-			 * "    suppliername varchar(20) not null,\r\n" +
-			 * "    supplieremail varchar(20) not null,\r\n" +
+			 * "    id varchar(20) not null,\r\n" +
+			 * "    name varchar(20) not null,\r\n" +
+			 * "    email varchar(20) not null,\r\n" +
 			 * "    password varchar(50) not null,\r\n" +
 			 * "    foreign key (supplierid) references user(id));" ;
 			 */
-			String query="insert into suppliers values(?,?,?,?)";
+			String query="insert into supplier values(?,?,?,?)";
 			try
 			{
 				Connection connection=getConnection();
@@ -146,5 +149,39 @@ public class registerDao
 			
 		}
 		return false;
+	}
+	
+	public static String validateUser(User user,HttpServletRequest request)
+	{
+		String query="select * from "+user.getRole()+" where id='"+user.getId();
+		String status=null;
+		HttpSession session=request.getSession();
+		
+		try
+		{
+			Connection connection=getConnection();
+			Statement statement=connection.createStatement();
+			
+			ResultSet rs=statement.executeQuery(query);
+			if(rs.next())
+			{
+				if(user.getPassword().equals(rs.getString("password")))
+				{
+					session.setAttribute("name", rs.getString("name"));
+					session.setAttribute("email", rs.getString("email"));
+					
+					return "Welcome "+user.getName();
+				}
+				else
+					return "Password Dosen't Match";
+			}
+			else
+				return "Invalid UserID";
+		 }
+		 catch(Exception e)
+		 {
+			System.out.println(e);
+		 }
+		return "Invalid UserID1";
 	}
 }

@@ -18,14 +18,23 @@ public class Signin extends HttpServlet {
    
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		String id=request.getParameter("");
-		String password=request.getParameter("");
+		String id=request.getParameter("userid");
+		String password=request.getParameter("password");
+		String status=null;
 		
 		HttpSession session=request.getSession();
 		String role=(String)session.getAttribute("role");
 		
-		User user=null;
 		
+		User user=new User();
+		
+		user.setId(id);
+		user.setPassword(PasswordHashing.encrypt(password));
+		user.setRole(role);
+		
+		status=RegistrationDao.validateUser(user,request);
+		
+		response.getWriter().println(status);
 	}
 
 }

@@ -21,7 +21,7 @@
 	          <span>Password<span style="color: red">*</span></span>
 	          <input type="password" name="password" id="password">
 	        </label>
-	        <button class="submit" type="button" onclick="return login()">Sign In</button>
+	        <button class="submit" type="submit" onclick="return login()">Sign In</button>
 	      </form>
 	    </div>
 	
