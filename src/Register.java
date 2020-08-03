@@ -26,45 +26,48 @@ public class Register extends HttpServlet {
 		HttpSession session=request.getSession();
 		String role=(String)session.getAttribute("role");
 		
-  		String id=request.getParameter("id");
+  		String id=request.getParameter("userid");
   		String name=request.getParameter("name");
-  		String email=request.getParameter("email");
-  		String password=request.getParameter("password");
+  		String email=request.getParameter("emailid");
+  		String password=request.getParameter("password1");
   		
   		PasswordHashing passwordEncrypt=new PasswordHashing();
   		
-  		User user=new User();
+  		User user=null;
+  		if(role.equalsIgnoreCase("customer"))
+  		{
+  			user=new Customer();
+  		}
+  		else if(role.equalsIgnoreCase("supplier"))
+  		{
+  			user=new Supplier();
+  		}
   		user.setId(id);
   		user.setName(name);
   		user.setEmail(email);
   		user.setPassword(PasswordHashing.encrypt(password));
   		user.setRole(role);
   		
-  		int status=0;
+  		System.out.println(user.getId()+" "+user.getName()+" "+user.getEmail()+" "+user.getPassword()+" "+user.getRole());
+  		
+  		String status=null;
+  		HttpSession session1=request.getSession();
   		
   		registerDao.addUser(user);
   		if(role.equalsIgnoreCase("customer"))
   		{
-  			Customer customer=(Customer)user;
-  			status=registerDao.addCustomer(customer);
+  			status=registerDao.addCustomer((Customer)user);
   		}
   		else if(role.equalsIgnoreCase("supplier"))
   		{
-  			Supplier supplier=(Supplier)user;
-  			status=registerDao.addSuplier(supplier);
+  			status=registerDao.addSuplier((Supplier)user);
   		}
   		
-  		RequestDispatcher rs=null;
-  		if(status==1)
-  		{
-  			out.println("<p>User Registered Sucessfully</p>");
-  		}
-  		else
-  		{
-  			out.println("<p>Error in Registration");
-  		}
-  		rs=request.getRequestDispatcher("login.jsp");
-  		rs.forward(request, response);
+  		
+  		session1.setAttribute("status",status);
+  		
+  		request.getRequestDispatcher("status.jsp").include(request, response);
+  		request.getRequestDispatcher("login.jsp").include(request, response);
   	}
 
 }

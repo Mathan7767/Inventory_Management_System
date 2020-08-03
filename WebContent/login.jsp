@@ -12,7 +12,7 @@
 	<div class="cont">
     	<div class="form sign-in">
       	<h2>Sign In</h2>
-      	<form action="<%=request.getContextPath() %>/signin" name="signin" method="post">
+      	<form action="<%=request.getContextPath() %>/Signin" name="signin" method="post">
 	        <label>
 	          <span>User Id<span style="color: red">*</span></span>
 	          <input type="text" name="userid" id="userid">
