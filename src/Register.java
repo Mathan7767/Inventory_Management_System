@@ -3,7 +3,6 @@
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,22 +17,23 @@ import javax.servlet.http.HttpSession;
 public class Register extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+	@Override
   	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
   	{
   		response.setContentType("text/html");
-  		PrintWriter out=response.getWriter();
-		
+  		PrintWriter out=null;
+  		
 		HttpSession session=request.getSession();
 		String role=(String)session.getAttribute("role");
 		
+		String status=null;
+		User user=null;
+  	  		
   		String id=request.getParameter("userid");
   		String name=request.getParameter("name");
   		String email=request.getParameter("emailid");
   		String password=request.getParameter("password1");
-  		
-  		PasswordHashing passwordEncrypt=new PasswordHashing();
-  		
-  		User user=null;
+  		String encryptPassword=null;
   		if(role.equalsIgnoreCase("customer"))
   		{
   			user=new Customer();
@@ -42,32 +42,47 @@ public class Register extends HttpServlet {
   		{
   			user=new Supplier();
   		}
-  		user.setId(id);
-  		user.setName(name);
-  		user.setEmail(email);
-  		user.setPassword(PasswordHashing.encrypt(password));
-  		user.setRole(role);
   		
-  		System.out.println(user.getId()+" "+user.getName()+" "+user.getEmail()+" "+user.getPassword()+" "+user.getRole());
+  		encryptPassword = PasswordHashing.encrypt(password);
   		
-  		String status=null;
-  		HttpSession session1=request.getSession();
+  		if(user!=null)
+  		{
+  			user.setId(id);
+  			user.setName(name);
+  			user.setEmail(email);
+  			user.setPassword(encryptPassword);
+  			user.setRole(role);
+  		}
+  		
+  		
+		/*
+		 * System.out.println(user.getId()+" "+user.getName()+" "+user.getEmail()+" "
+		 * +user.getPassword()+" "+user.getRole());
+		 */
+  		
   		
   		RegistrationDao.addUser(user);
+  		
   		if(role.equalsIgnoreCase("customer"))
   		{
   			status=RegistrationDao.addCustomer((Customer)user);
   		}
   		else if(role.equalsIgnoreCase("supplier"))
   		{
-  			status=RegistrationDao.addSuplier((Supplier)user);
+  			status=RegistrationDao.addSupplier((Supplier)user);
   		}
   		
+  		session.setAttribute("status",status);
+  		System.out.println(status);
   		
-  		session1.setAttribute("status",status);
+  		out=response.getWriter();
+  		out.println("<script type=\"text/javascript\">");
+  		out.println("alert('"+status+"');");
+  		out.println("</script>");
   		
-  		request.getRequestDispatcher("status.jsp").include(request, response);
-  		request.getRequestDispatcher("login.jsp").include(request, response);
+  		//response.sendRedirect("login.jsp");
+  		
+  		
   	}
 
 }

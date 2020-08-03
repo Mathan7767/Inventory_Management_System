@@ -31,7 +31,7 @@ public class RegistrationDao
 	{
 		String status=null;
 		
-		if(checkUser(customer,"Customer"))
+		if(checkUser(customer,"Customer")==false)
 			return "User already Exist";
 		else
 		{
@@ -63,7 +63,7 @@ public class RegistrationDao
 		}
 	}
 	
-	public static String addSuplier(Supplier supplier) 
+	public static String addSupplier(Supplier supplier) 
 	{
 	String status=null;
 		
@@ -129,26 +129,26 @@ public class RegistrationDao
 	
 	public static boolean checkUser(User user,String role)
 	{
-	
+			
+		String query="select * from user where id=?";
+		Connection connection=null;
+		PreparedStatement statement=null;
+		int status=0;
 		try
 		{
-			Connection connection=getConnection();
-			Statement statement=connection.createStatement();
-			String query="select * from user where id='"+user.getId()+"'";                                  
+			connection=getConnection();
+			statement=connection.prepareStatement(query);
+			                                  
+			statement.setString(1, user.getId());
 			
-			ResultSet rs = statement.executeQuery(query);
-			if( rs.next())
-			{
-			        return true;
-			}
-			
+			status=statement.executeUpdate();
 		}
 		catch(Exception e)
 		{
 			System.out.println(e);
 			
 		}
-		return false;
+		return (status==1)?true:false;
 	}
 	
 	public static String validateUser(User user,HttpServletRequest request)
@@ -165,7 +165,6 @@ public class RegistrationDao
 			ResultSet rs=statement.executeQuery(query);
 			if(rs.next())
 			{
-				System.out.println(user.getPassword()+" "+rs.getString("password"));
 				if(user.getPassword().equals(rs.getString("password")))
 				{
 					session.setAttribute("name", rs.getString("name"));

@@ -1,6 +1,8 @@
 
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,7 +23,7 @@ public class Signin extends HttpServlet {
 		String id=request.getParameter("userid");
 		String password=request.getParameter("password");
 		String status=null;
-		
+		PrintWriter out=null;
 		HttpSession session=request.getSession();
 		String role=(String)session.getAttribute("role");
 		
@@ -34,7 +36,17 @@ public class Signin extends HttpServlet {
 		
 		status=RegistrationDao.validateUser(user,request);
 		
-		response.getWriter().println(status);
+		try
+		{
+			out= response.getWriter();
+			out.println("<script type=\"text/javascript\">");
+			out.println("alert('"+status+"');");
+			out.println("</script>");
+		}
+		catch(IOException e)
+		{
+			System.out.println(e);
+		}
 	}
 
 }
