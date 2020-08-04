@@ -80,7 +80,7 @@ public class Register extends HttpServlet {
   		out.println("alert('"+status+"');");
   		out.println("</script>");
   		
-  		//response.sendRedirect("login.jsp");
+  		response.sendRedirect("login.jsp");
   		
   		
   	}

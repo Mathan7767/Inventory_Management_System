@@ -31,7 +31,7 @@ public class RegistrationDao
 	{
 		String status=null;
 		
-		if(checkUser(customer,"Customer")==false)
+		if(checkUser(customer,"Customer"))
 			return "User already Exist";
 		else
 		{
