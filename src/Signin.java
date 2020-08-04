@@ -39,14 +39,22 @@ public class Signin extends HttpServlet {
 		try
 		{
 			out= response.getWriter();
+			String  alert="alert('"+status+"');";
 			out.println("<script type=\"text/javascript\">");
 			out.println("alert('"+status+"');");
+			out.println(alert);
 			out.println("</script>");
+			
+			if(role.equalsIgnoreCase("admin"))
+				response.sendRedirect("adminDashboard.jsp");
+			//System.out.println(session.getAttribute("name")+""+session.getAttribute("email"));
+			
 		}
 		catch(IOException e)
 		{
 			System.out.println(e);
 		}
+		
 	}
 
 }

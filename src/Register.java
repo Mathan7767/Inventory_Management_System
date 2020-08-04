@@ -71,7 +71,7 @@ public class Register extends HttpServlet {
   		{
   			status=RegistrationDao.addSupplier((Supplier)user);
   		}
-  		
+  		System.out.println("ehllo");
   		session.setAttribute("status",status);
   		System.out.println(status);
   		
