@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1" import="java.util.Date,java.text.SimpleDateFormat"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,8 +7,10 @@
 	<title>New Product</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" text="text/css" href="background.css"/>
 </head>
 <body>
+
 	<div class="overlay"><div class="loader"></div></div>
 	   <br/><br/>
 
@@ -25,13 +27,13 @@
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label" align="right">Order Date</label>
                             <div class="col-sm-6">
-                                <input type="text" id="order_date" name="order_date" readonly class="form-control form-control-sm" value="<%=java.time.LocalDate.now()%>"/>
+                                <input type="text" id="order_date" name="order_date" readonly class="form-control form-control-sm" value="<%=(new SimpleDateFormat("dd:MM:yyyy").format(new Date()))%>"/>
                             </div>
                          </div>
                          <div class="form-group row">
                             <label class="col-sm-3 col-form-label" align="right">Order Time</label>
                             <div class="col-sm-6">
-                                <input type="text" id="order_date" name="order_date" readonly class="form-control form-control-sm" value="<%=java.time.LocalTime.now()%>"/>
+                                <input type="text" id="order_time" name="order_time" readonly class="form-control form-control-sm" value="<%=(new SimpleDateFormat("hh:mm:ss").format(new Date()))%>"/>
                             </div>
                          </div>
                         <div class="form-group row">
@@ -57,7 +59,7 @@
                                     </tbody>
                                 </table> <!--Table Ends-->
                                 <center style="padding:10px;">
-                                    <button id="add" style="width:150px;" class="btn btn-success" onclick="">Add</button>
+                                    <button id="add" style="width:150px;" class="btn btn-success" onclick="add()">Add</button>
                                     <button id="remove" style="width:150px;" class="btn btn-danger">Remove</button>
                                 </center>
                             </div> <!--Crad Body Ends-->
