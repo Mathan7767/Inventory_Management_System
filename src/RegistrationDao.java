@@ -2,6 +2,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 import javax.servlet.http.HttpServletRequest;
@@ -183,5 +184,53 @@ public class RegistrationDao
 			System.out.println(e);
 		 }
 		return "Invalid UserID1";
+	}
+
+	public static void inserToTable(String userId, String secret) 
+	{
+		Connection connection=null;
+		PreparedStatement statement=null;
+		String query="insert into hashtable values(?,?)";
+		try
+		{
+			connection=getConnection();
+			statement=connection.prepareStatement(query);
+			statement.setString(1, userId);
+			statement.setString(2, secret);
+			
+			statement.executeUpdate();
+		}
+		catch(SQLException e)
+		{
+			System.out.println(e);
+		}
+		
+	}
+
+	public static String retrive(String userId) 
+	{
+		Connection connection=null;
+		Statement statement=null;
+		ResultSet resultSet=null;
+		String query="select * from hashtable where id="+userId;
+		String secret=null;
+		
+		try
+		{
+			connection=getConnection();
+			statement=connection.createStatement();
+			resultSet=statement.executeQuery(query);
+			
+			if(resultSet.next())
+			{
+				secret=resultSet.getString("secretkey");
+			}
+			System.out.println(secret);
+		}
+		catch(SQLException e)
+		{
+			System.out.println(e);
+		}
+		return secret;
 	}
 }

@@ -59,7 +59,7 @@
                                     </tbody>
                                 </table> <!--Table Ends-->
                                 <center style="padding:10px;">
-                                    <button id="add" style="width:150px;" class="btn btn-success" onclick="add()">Add</button>
+                                    <button id="add" style="width:150px;" class="btn btn-success" onclick="add()	">Add</button>
                                     <button id="remove" style="width:150px;" class="btn btn-danger">Remove</button>
                                 </center>
                             </div> <!--Crad Body Ends-->
