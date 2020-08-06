@@ -86,11 +86,11 @@
     
     <div class="popup" id="popup">
         <div class="popup-content">
-        	<form id="form">
+        	<form id="form" name="form">
             <img scr="close.jpg" class="close" id="close">
-            <input type="text" class="input" placeholder="Enter Item" name="new-item" id="input-type"><br><br>
-            <input type="text" class="input" placeholder="Enter Quantity" name="new-quantity" id="input-type"><br>
-            <input type="submit" class="btn btn-success button" name="button" value="Add Product">
+            <input type="text" class="input" placeholder="Enter Item" name="new_item" id="input-type"><br><br>
+            <input type="text" class="input" placeholder="Enter Quantity" name="new_quantity" id="input-type"><br>
+            <input type="submit" class="btn btn-success button" name="button" onclick="addRow()" value="Add Product">
             </form>
         </div>
     </div>
@@ -102,12 +102,38 @@
             document.getElementById("pane").style.display = "none";
             
           })
-
           document.getElementById("close").addEventListener("click", function()
           {
             document.getElementById("popup").style.display = "none";
             document.getElementById("pane").style.display = "flex";
           })
+          function addRow()
+		  {
+        		// get input values
+                var item = document.form.new_item.value;
+                var quantity = document.form.new_quantity.value;
+                
+                  
+                // get the html table
+                // 0 = the first table
+                var table = document.getElementsByTagName('table')[0];
+                  
+                // add new empty row to the table
+                // 0 = in the top 
+                // table.rows.length = the end
+                // table.rows.length/2+1 = the center
+                var newRow = table.insertRow(table.rows.length/2+1);
+                 
+                // add cells to the row
+                var cel1 = newRow.insertCell(0);
+                var cel2 = newRow.insertCell(1);
+                var cel3 = newRow.insertCell(2);
+                  
+                // add values to the cells
+                cel1.innerHTML = '#';
+                cel2.innerHTML = item;
+                cel3.innerHTML = quantity;
+    		}
 
         </script>
     <!-- JS, Popper.js, and jQuery -->

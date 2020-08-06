@@ -1,14 +1,17 @@
+package inventory;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-public class RegistrationDao
+public class EmartDao
 {
 	public static Connection getConnection()
 	{
@@ -232,5 +235,47 @@ public class RegistrationDao
 			System.out.println(e);
 		}
 		return secret;
+	}
+	
+	public static List<User> getAllRecords(String role)
+	{
+		List<User> list=new ArrayList<>();
+		String query="Select * from "+role;
+		
+		User user=null;
+		
+		Connection connection=null;
+		Statement statement=null;
+		ResultSet resultSet=null;
+		
+		try
+		{
+			connection=getConnection();
+			statement=connection.createStatement();
+			resultSet=statement.executeQuery(query);
+			
+			while(resultSet.next())
+			{
+				
+				//UpCasting based on the role of the user 
+				if(role.equalsIgnoreCase("customer"))
+					user=new Customer();
+				else if(role.equalsIgnoreCase("supplier"))
+					user=new Supplier();
+				
+				user.setId(resultSet.getString("id"));
+				user.setName(resultSet.getString("name"));
+				user.setEmail(resultSet.getString("email"));
+				
+				//adding the user to the list 
+				list.add(user);
+					
+			}
+		}
+		catch(SQLException e)
+		{
+			System.out.println(e);
+		}
+		return list;
 	}
 }

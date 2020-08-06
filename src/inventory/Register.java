@@ -1,3 +1,4 @@
+package inventory;
 
 
 import java.io.IOException;
@@ -61,15 +62,15 @@ public class Register extends HttpServlet {
 		 */
   		
   		
-  		RegistrationDao.addUser(user);
+  		EmartDao.addUser(user);
   		
   		if(role.equalsIgnoreCase("customer"))
   		{
-  			status=RegistrationDao.addCustomer((Customer)user);
+  			status=EmartDao.addCustomer((Customer)user);
   		}
   		else if(role.equalsIgnoreCase("supplier"))
   		{
-  			status=RegistrationDao.addSupplier((Supplier)user);
+  			status=EmartDao.addSupplier((Supplier)user);
   		}
   		System.out.println("ehllo");
   		session.setAttribute("status",status);

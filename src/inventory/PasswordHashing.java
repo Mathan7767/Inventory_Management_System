@@ -1,3 +1,4 @@
+package inventory;
 import java.security.MessageDigest;
 import java.util.Arrays;
 import java.util.Base64;
@@ -38,19 +39,4 @@ public class PasswordHashing
         return null;
     }
     
-    public static String decrypt(String strToDecrypt) 
-    {
-        try
-        {
-            setKey(secret);
-            Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5PADDING");
-            cipher.init(Cipher.DECRYPT_MODE, secretKey);
-            return new String(cipher.doFinal(Base64.getDecoder().decode(strToDecrypt)));
-        } 
-        catch (Exception e) 
-        {
-            System.out.println("Error while decrypting: " + e.toString());
-        }
-        return null;
-    }
 }

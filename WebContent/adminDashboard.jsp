@@ -76,7 +76,7 @@
                         <p class="card-text">Here you can manage your customer</p>
                         <br>
                         <a href="#" class="btn btn-primary">Add</a>
-                        <a href="#" class="btn btn-primary">Manage</a>
+                        <a href="manageCustomer.jsp" class="btn btn-primary">Manage</a>
                     </div>
                 </div>
             </div>
@@ -97,8 +97,7 @@
                         <h4 class="card-title">Products</h4>
                         <p class="card-text">Here you can manage your products</p>
                         <br>
-                        <a href="#" class="btn btn-primary">Add</a>
-                        <a href="#" class="btn btn-primary">Manage</a>
+                            <a href="#" class="btn btn-primary">Manage</a>
                     </div>
                 </div>
             </div>

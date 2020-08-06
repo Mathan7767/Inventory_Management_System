@@ -1,3 +1,4 @@
+package inventory;
 
 
 import java.io.IOException;
@@ -34,7 +35,7 @@ public class Signin extends HttpServlet {
 		user.setPassword(PasswordHashing.encrypt(password));
 		user.setRole(role);
 		
-		status=RegistrationDao.validateUser(user,request);
+		status=EmartDao.validateUser(user,request);
 		
 		try
 		{
