@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import="java.util.List" import="inventory.User,inventory.EmartDao"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page import="java.util.List"%>
+<%@ page import="inventory.User,inventory.EmartDao"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
@@ -12,13 +13,17 @@
 </head>
 <body>
 
-		<%  
+		<%
 			String role="customer";
 			List<User> list=EmartDao.getAllRecords(role);  
 			request.setAttribute("list",list);  
 		%>  
+		<%!int count; %>
 	<div class="heading">
-		<h1>Customer Details</h1>
+		<h1>Customer Details</h1><br>
+		
+		<!-- initialize every time when the page is refreshed -->
+		<%count=0; %>
   		<div class="header">
     		<table>
       			<thead>
@@ -39,12 +44,12 @@
       	<c:forEach items="${list}" var="u">  
 
 	        <tr>
-	        	<td></td>
+	        	<td><%=++count %></td>
 	        	<td>${u.getId()}</td>
 	        	<td>${u.getName()}</td>
 	        	<td>${u.getEmail()}</td>
-	        	<td><a href="edituser.jsp?id=${u.getId()}" style="width:150px;" class="btn btn-success">Edit</a></td>
-	        	<td><a  href="deleteuser.jsp?id=${u.getId()}" style="width:150px;" class="btn btn-danger">Delete</a></td>
+	        	<td><a href="editcustomer.jsp?id=${u.getId()}&role=customer" style="width:150px;" class="btn btn-success">Edit</a></td>
+	        	<td><a href="deletecustomer.jsp?id=${u.getId()}&role=customer" style="width:150px;" class="btn btn-danger">Delete</a></td>
 	        </tr>
 	        
         </c:forEach>  
