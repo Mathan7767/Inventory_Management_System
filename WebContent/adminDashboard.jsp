@@ -26,8 +26,8 @@
           background: -webkit-linear-gradient(left, #7579ff, #b224ef);
           font-family: 'Nunito', sans-serif;
         }
-
     </style>
+    
     
     <br/><br/>
     <%HttpSession session1=request.getSession(); %>
@@ -105,7 +105,11 @@
         </div>
     </div>
 	
-	
+	<form align="right" name="form1" method="post" action="log_out.php">
+  		<label class="logoutLblPos">
+  		<input name="submit2" type="submit" id="submit2" value="log out">
+  		</label>
+	</form>
 	<!-- JS, Popper.js, and jQuery -->
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>

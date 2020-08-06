@@ -7,15 +7,16 @@
 	<title>New Product</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" text="text/css" href="background.css"/>
+    <link rel="stylesheet" text="text/css" href="neworder.css"/>
+    <style type="text/css" src="js/newOrder.js"></style>
 </head>
 <body>
 
-	<div class="overlay"><div class="loader"></div></div>
+	<div class="overlay" id="pane"><div class="loader"></div></div>
 	   <br/><br/>
 
        <div class="container" style="min-height: 100%;height: 100%;">
-        <br><br><br>
+        <br>
         <div class="row">
             <div class="col-md-10 mx-auto">
                 <div class="card" style="box-shadow:0 0 25px 0 lightgrey;">
@@ -37,29 +38,30 @@
                             </div>
                          </div>
                         <div class="form-group row">
-                            <label class="col-sm-3 col-form-label" align="right">Supplier ID*</label>
+                            <label class="col-sm-3 col-form-label" align="right">Supplier ID<span style="color: red">*</span></label>
                             <div class="col-sm-6">
-                                <input type="text" id="supplier_id" name="supplier_id"class="form-control form-control-sm" placeholder="Enter Supplier ID" required/>
+                                <input type="text" id="supplier_id" name="supplier_id"class="form-control form-control-sm" placeholder="Enter Supplier ID"/>
                             </div>
                         </div>
 
-
-                        <div class="card" style="box-shadow:0 0 15px 0 lightgrey;">
+                     <div class="card" style="box-shadow:0 0 15px 0 lightgrey;">
                             <div class="card-body">
                                 <h3>Order list</h3>
-                                <table align="center" style="width:800px;">
+                                <table id='tableid' align="center" style="width:800px;">
                                     <thead>
                                       <tr>
                                         <th>#</th>
                                         <th style="text-align:center;">Item Name</th>
                                         <th style="text-align:center;">Quantity</th>
                                         </tr>
+                                        <tr>
+                                        </tr>
                                     </thead>
                                     <tbody id="invoice_item">
                                     </tbody>
                                 </table> <!--Table Ends-->
                                 <center style="padding:10px;">
-                                    <button id="add" style="width:150px;" class="btn btn-success" onclick="add()	">Add</button>
+                                    <button id="addProduct" style="width:150px;" class="btn btn-success">Add</button>
                                     <button id="remove" style="width:150px;" class="btn btn-danger">Remove</button>
                                 </center>
                             </div> <!--Crad Body Ends-->
@@ -69,7 +71,7 @@
               
                     <center>
                       <input type="submit" id="order_form" style="width:150px;" class="btn btn-info" value="Order">
-                      <input type="submit" id="print_invoice" style="width:150px;" class="btn btn-success d-none" value="Print Invoice">
+                      <input type="submit" id="print_invoice" style="width:150px;" class="btn btn-success" value="Print Invoice">
                     </center>
 
 
@@ -81,6 +83,33 @@
         </div>
     </div>
     
+    
+    <div class="popup" id="popup">
+        <div class="popup-content">
+        	<form id="form">
+            <img scr="close.jpg" class="close" id="close">
+            <input type="text" class="input" placeholder="Enter Item" name="new-item" id="input-type"><br><br>
+            <input type="text" class="input" placeholder="Enter Quantity" name="new-quantity" id="input-type"><br>
+            <input type="submit" class="btn btn-success button" name="button" value="Add Product">
+            </form>
+        </div>
+    </div>
+   
+    <script type="text/javascript">
+          document.getElementById("addProduct").addEventListener("click", function()
+          {
+            document.getElementById("popup").style.display = "flex";
+            document.getElementById("pane").style.display = "none";
+            
+          })
+
+          document.getElementById("close").addEventListener("click", function()
+          {
+            document.getElementById("popup").style.display = "none";
+            document.getElementById("pane").style.display = "flex";
+          })
+
+        </script>
     <!-- JS, Popper.js, and jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
