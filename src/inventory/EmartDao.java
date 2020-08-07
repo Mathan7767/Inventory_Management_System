@@ -11,6 +11,10 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import model.Customer;
+import model.Supplier;
+import model.User;
+
 public class EmartDao
 {
 	public static Connection getConnection()
@@ -277,5 +281,91 @@ public class EmartDao
 			System.out.println(e);
 		}
 		return list;
+	}
+	
+	public static int delete(User user,String role)
+	{
+		String query="delete from "+role+" where id=?";
+		int status=0;
+		
+		Connection connection=null;
+		PreparedStatement statement=null;
+		
+		try
+		{
+			connection=getConnection();
+			statement=connection.prepareStatement(query);
+			statement.setString(1, user.getId());
+			
+			status=statement.executeUpdate();
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
+		return status;
+	}
+	
+	public static User getUserById(String id,String role)
+	{
+		User user=null;
+		
+		if(role.equalsIgnoreCase("customer"))
+			user=new Customer();
+		else 
+			user=new Supplier();
+		
+		String query="select * from "+role+" where id='"+id+"'";
+		Connection connection=null;
+		Statement statement=null;
+		ResultSet resultSet=null;
+		try
+		{
+			connection=getConnection();
+			statement=connection.createStatement();
+			resultSet=statement.executeQuery(query);
+			
+			if(resultSet.next())
+			{
+				user.setId(resultSet.getString("id"));
+				user.setName(resultSet.getString("name"));
+				user.setEmail(resultSet.getString("email"));
+				user.setPassword(resultSet.getString("password"));
+				
+				return user; 
+			}
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
+		return null;
+	}
+	
+	public static int update(User user,String role)
+	{
+		String query="update "+role+" set name=?,email=? where id=?";
+		int status=0;
+		
+		Connection connection=null;
+		PreparedStatement statement=null;
+		
+		try
+		{
+			System.out.println(role+" "+user.getId()+" "+user.getEmail());
+			connection=getConnection();
+			statement=connection.prepareStatement(query);
+			statement.setString(1, user.getId());
+			statement.setString(2, user.getEmail());
+			statement.setString(3, user.getId());
+			status=statement.executeUpdate();
+			System.out.println(status);
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
+		
+		return status;
 	}
 }

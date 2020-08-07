@@ -3,6 +3,10 @@
 <!DOCTYPE html>
 <html>
  <head>
+ 	<meta charset="ISO-8859-1">
+	<meta name="description" content="Inventory Management System For Emart Grocery Shop">
+  	<meta name="keywords" content="HTML, JSP, CSS, Java, MySQL">
+  	<meta name="author" content="Mathan S">
 </head>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   		<a class="navbar-brand" href="#">Inventory System</a>

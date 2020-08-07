@@ -122,6 +122,7 @@ function validateRole(role,userid)
 	}
 	return true;
 }
+
 function validateEmail(email)
 {
 	return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);

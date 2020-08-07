@@ -1,4 +1,4 @@
-package inventory;
+package Controller;
 
 
 import java.io.IOException;
@@ -10,6 +10,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import inventory.EmartDao;
+import inventory.PasswordHashing;
+import model.Customer;
+import model.Supplier;
+import model.User;
 
 /**
  * Servlet implementation class login

@@ -4,9 +4,16 @@
 <html>
 <head>
 	<meta charset="ISO-8859-1">
-	<title>Insert title here</title>
+	<meta name="description" content="Inventory Management System For Emart Grocery Shop">
+  	<meta name="keywords" content="HTML, JSP, CSS, Java, MySQL">
+  	<meta name="author" content="Mathan S">
+	
+	<title>Registration</title>
+	
+	<link rel="icon" type="image/x-icon" href="images/registration.jpg">
 	<link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700,800&display=swap" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="login.css">
+	
 </head>
 <body>
 	
