@@ -2,13 +2,13 @@
   - About the Project
   - Built With
  # Development Tools & Technologies
-  -JSP
-  -Servlets
-  -JDBC
+  - JSP
+  - Servlets
+  - JDBC
  # Database
-  -MySQL
+  - MySQL
  # IDE for the Development
-  -Eclipse IDE 4
+  - Eclipse IDE 4
  
 
 
