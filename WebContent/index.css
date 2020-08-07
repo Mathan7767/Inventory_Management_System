@@ -1,0 +1,52 @@
+@charset "ISO-8859-1";
+
+#content{
+text-align:center;
+padding-top: 15%;
+text-shadow: 1px 1px 1px black;
+}
+body{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: -webkit-linear-gradient(left, #7579ff, #b224ef);
+  font-family: 'Nunito', sans-serif;
+}
+
+#heading{
+/*font-family: Varela Round;*/
+color:white;
+font-weight: 700;
+font-size:4.5em;
+}
+html{
+height:100%;
+}
+
+.blink:hover{
+    color: red;
+}
+
+.btn
+{
+  border-radius: 30px;
+}
+
+.image
+{
+	width:200px;
+	height: 100px;
+	margin: 10px;
+	border-radius: 50%;
+}
+
+#datalist
+{
+    border-radius: 15px 50px 30px;
+    border: 2px solid #609;
+    padding: 20px; 
+    width: 200px;
+    height: 15px; 
+}
