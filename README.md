@@ -48,4 +48,4 @@
 
 # How to run the application
 - Clone/Download the project and import into your IDE
-- Run index.html as Main File
+- Run [index.html](https://github.com/Mathan7767/Inventory_Management_System/blob/master/WebContent/index.html) as Main File
