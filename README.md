@@ -20,12 +20,17 @@
   - For More details in [Configuring Apache Maven](https://docs.github.com/en/packages/using-github-packages-with-your-projects-ecosystem/configuring-apache-maven-for-use-with-github-packages)
   
 # Development Tools & Technologies
-  - JSP
-  - Servlets
-  - JDBC
-  
-# Database
-  - MySQL
+  1. Front-End Development
+     - HTML
+     - JSP
+     - CSS
+     - Javascript
+   2. Back-End Development
+     - Java
+     - Servlets
+     - JDBC
+   3. Database
+     - MySQL
   
 # IDE for the Development
   - Eclipse IDE 4.15.0
