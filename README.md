@@ -17,6 +17,7 @@
   - Now put the ***mvn*** command on your path.
   - Install the Core Platform, Java 1.8(or higher) JDK and make sure your run ``` Java ``` from command line.
   - Now you can run ```mvn lean install``` and Maven will complie your project  
+  - For More details in [Configuring Apache Maven](https://docs.github.com/en/packages/using-github-packages-with-your-projects-ecosystem/configuring-apache-maven-for-use-with-github-packages)
   
 # Development Tools & Technologies
   - JSP
