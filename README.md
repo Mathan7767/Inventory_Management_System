@@ -27,7 +27,7 @@
   - MySQL
   
 # IDE for the Development
-  - Eclipse IDE 4
+  - Eclipse IDE 4.15.0
   
 # Working with Eclipse IDE
   Maven Eclipse plugin installation:
@@ -37,6 +37,7 @@
   3. Type M2E plugin install and restart the Eclipse
   4. Maven is used .m2 folder to download all the jars.
   5. Now in window->preferences of Eclipse, type Maven then select User Setting fromt the menu and then give path of the setting .xml here.
+  
 # Task
   1. Model Building
   2. UI Development
