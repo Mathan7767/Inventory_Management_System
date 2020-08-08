@@ -21,16 +21,16 @@
   
 # Development Tools & Technologies
   1. Front-End Development
-     - HTML
-     - JSP
-     - CSS
-     - Javascript
-   2. Back-End Development
-     - Java
-     - Servlets
-     - JDBC
-   3. Database
-     - MySQL
+     * HTML
+     * JSP
+     * CSS
+     * Javascript
+  2. Back-End Development
+     * Java
+     * Servlet
+     * JDBC
+  3. Database
+     * MySQL
   
 # IDE for the Development
   - Eclipse IDE 4.15.0
