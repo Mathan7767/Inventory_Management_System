@@ -1,5 +1,5 @@
 # Problem statement
-   To develop a E-Mart into Grocery business for managing the inventory its gets on the daily or regular basis.
+   To develop a E-Mart into Grocery business for managing the inventory its gets on the daily or regular basis. [For more details](https://github.com/Mathan7767/Inventory_Management_System/blob/master/Documents/Objective.pdf)
    
 # Inventory Management System for Emart Grocery System
   - An attempt to build an Web Application for Inventory Management. This application, E-Mart manages the inventory,customers,supplier also to add products.
