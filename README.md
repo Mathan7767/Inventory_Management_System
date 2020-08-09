@@ -13,7 +13,7 @@
   - index.html acts as homepage of the website.
  
 # Built With
-  - To build it, you will need to download and unpack the latest (or recent) version of Maven (https://maven.apache.org/download.cgi).
+  - To build it, you will need to [download](https://maven.apache.org/download.cgi) and unpack the latest (or recent) version of Maven.
   - Now put the ***mvn*** command on your path.
   - Install the Core Platform, Java 1.8(or higher) JDK and make sure your run ``` Java ``` from command line.
   - Now you can run ```mvn lean install``` and Maven will complie your project  
@@ -33,8 +33,15 @@
      * MySQL
   
 # IDE for the Development
-  - Eclipse IDE 4.15.0
-  
+  - Eclipse IDE 4.15.
+# Prerequisites
+   There are a few important prerequisites which should be prepared or answered before deployment of this project.Here's the software you'll need before you start. [Click Here](https://github.com/Mathan7767/Inventory_Management_System/blob/master/requriments.txt) 
+   - **Web server + servlet container**
+      * Additional information: [Web Server](https://github.com/OneBusAway/onebusaway/wiki/Setting-Up-a-Tomcat-Server-in-Eclipse)
+      * Required: Enabled https, ability to deploy java webapps
+   - **MySQl**
+      * Additional information: [MySQL](https://gist.github.com/learncfinaweek/4120988#:~:text=When%20presented%20with%20a%20list,'Next'%20until%20it%20disappears.)
+      * Required: postgreSQL database cluster up and running, user with permissions to create/access databases
 # Working with Eclipse IDE
   Maven Eclipse plugin installation:
   1. Download the maven and unzip into directory
@@ -49,8 +56,7 @@
   2. UI Development
   3. Deployment
  
-
-
 # How to run the application
 - Clone/Download the project and import into your IDE
+``` git clone https://github.com/Mathan7767/Inventory_Management_System```
 - Run [index.html](https://github.com/Mathan7767/Inventory_Management_System/blob/master/WebContent/index.html) as Main File
