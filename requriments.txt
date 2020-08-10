@@ -1,6 +1,6 @@
-Eclipse IDE for Java Developers
+Eclipse IDE for Java Developers>=v4.15
 java JDK>=v1.8
 Apache Tomcat>=v8.5
 maven>=v3.6.3
 JSTL>=v1.2.1
-mysql-connector>=8.0
+mysql-connector>=v8.0

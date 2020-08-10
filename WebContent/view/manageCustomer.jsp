@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ page import="java.util.List"%>
 <%@ page import="model.User"%>
-<%@ page import="inventory.EmartDao"%>
+<%@ page import="dao.EmartDao"%>
 
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
@@ -16,7 +16,8 @@
 	<title>Customer Details</title>
 	
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
-	<link rel="stylesheet" href="managecustomer.css">
+	<link rel="stylesheet" href="/css/managecustomer.css">
+	
 </head>
 <body>
 

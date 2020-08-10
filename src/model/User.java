@@ -1,6 +1,7 @@
 package model;
 
-public class User {
+public class User 
+{
 	
 	private String id;
 	private String name;
@@ -37,8 +38,4 @@ public class User {
 	public void setRole(String role) {
 		this.role = role;
 	}
-	
-	
-	
-
 }

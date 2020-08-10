@@ -17,7 +17,7 @@ public class SecretKeyGenerator
         int range=getRandomInRange(10,40);
         while (range-- != 0) 
         {
-            int character = (int)(Math.random()*randString.length());
+        	int character = (int)(Math.random()*randString.length());
             builder.append(randString.charAt(character));
         }
         return builder.toString();

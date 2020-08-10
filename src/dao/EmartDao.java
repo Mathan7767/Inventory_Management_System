@@ -1,4 +1,5 @@
-package inventory;
+package dao;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -43,18 +44,19 @@ public class EmartDao
 			return "User already Exist";
 		else
 		{
-			/*
-			 * String createquery="create table if not exists customers\r\n" +
-			 * "    ( customerid varchar(20) not null,\r\n" +
-			 * "    name varchar(20) not null,\r\n" +
-			 * "    email varchar(20) not null,\r\n" +
-			 * "    password varchar(50) not null,\r\n" +
-			 * "    foreign key(customerid) references user(id));";
-			 */		String query="insert into customer values(?,?,?,?)";
+			
+			 String createquery="create table if not exists customers\r\n" +
+			 "    ( customerid varchar(20) not null,\r\n" +
+			 "    name varchar(20) not null,\r\n" +
+			 "    email varchar(20) not null,\r\n" +
+			 "    password varchar(50) not null,\r\n" +
+			 "    foreign key(customerid) references user(id));";
+			 
+			String query="insert into customer values(?,?,?,?)";
 			try
 			{
 				Connection connection=getConnection();
-			//	connection.createStatement().executeUpdate(createquery);
+				connection.createStatement().executeUpdate(createquery);
 				PreparedStatement statement=connection.prepareStatement(query);
 				statement.setString(1, customer.getId());
 				statement.setString(2, customer.getName());
@@ -80,19 +82,19 @@ public class EmartDao
 		else
 		{
 	
-			/*
-			 * String createQuery="create table if not exists suppliers (\r\n" +
-			 * "    id varchar(20) not null,\r\n" +
-			 * "    name varchar(20) not null,\r\n" +
-			 * "    email varchar(20) not null,\r\n" +
-			 * "    password varchar(50) not null,\r\n" +
-			 * "    foreign key (supplierid) references user(id));" ;
-			 */
+			
+			 String createQuery="create table if not exists suppliers  (\r\n" +
+			 "    id varchar(20) not null,\r\n" +
+			 "    name varchar(20) not null,\r\n" +
+			 "    email varchar(20) not null,\r\n" +
+			 "    password varchar(50) not null,\r\n" +
+			 "    foreign key (supplierid) references user(id));" ;
+			 
 			String query="insert into supplier values(?,?,?,?)";
 			try
 			{
 				Connection connection=getConnection();
-			//	connection.createStatement().executeUpdate(createQuery);
+				connection.createStatement().executeUpdate(createQuery);
 				PreparedStatement statement=connection.prepareStatement(query);
 				statement.setString(1, supplier.getId());
 				statement.setString(2, supplier.getName());
@@ -111,18 +113,18 @@ public class EmartDao
 
 	public static void addUser(User user) 
 	{
-		/*
-		 * String createQuery="create table if not exists user\r\n" +
-		 * "    (\r\n      							" +
-		 * "    id varchar(20) not null primary key,\r\n" +
-		 * "    role varchar(20) not null,\r\n" + "    Entry_time timestamp);" ;
-		 */
+		
+		 String createQuery="create table if not exists user\r\n" +
+		 "    (\r\n      							" +
+		 "    id varchar(20) not null primary key,\r\n" +
+		 "    role varchar(20) not null,\r\n" + "    Entry_time timestamp);" ;
+		 
 		String query="insert into user values(?,?,CURRENT_TIMESTAMP)";
 		
 		try
 		{
 			Connection connection=getConnection();
-			//connection.createStatement().executeUpdate(createQuery);
+			connection.createStatement().executeUpdate(createQuery);
 			PreparedStatement statement=connection.prepareStatement(query);
 			statement.setString(1,user.getId());
 			statement.setString(2, user.getRole());
@@ -355,7 +357,7 @@ public class EmartDao
 			System.out.println(role+" "+user.getId()+" "+user.getEmail());
 			connection=getConnection();
 			statement=connection.prepareStatement(query);
-			statement.setString(1, user.getId());
+			statement.setString(1, user.getName());
 			statement.setString(2, user.getEmail());
 			statement.setString(3, user.getId());
 			status=statement.executeUpdate();
@@ -369,3 +371,4 @@ public class EmartDao
 		return status;
 	}
 }
+

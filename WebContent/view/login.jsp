@@ -10,9 +10,9 @@
 	
 	<title>Registration</title>
 	
-	<link rel="icon" type="image/x-icon" href="images/registration.jpg">
+	<link rel="icon" type="image/x-icon" href="/images/registration.jpg">
 	<link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700,800&display=swap" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="login.css">
+	<link rel="stylesheet" type="text/css" href="/css/login.css">
 	
 </head>
 <body>

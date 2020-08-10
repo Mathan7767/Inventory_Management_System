@@ -14,8 +14,8 @@
 	
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" text="text/css" href="neworder.css"/>
-    <style type="text/css" src="js/newOrder.js"></style>
+    <link rel="stylesheet" text="text/css" href="/css/neworder.css"/>
+    <style type="text/css" src="/js/newOrder.js"></style>
 </head>
 <body>
 

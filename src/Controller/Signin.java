@@ -1,4 +1,4 @@
-package Controller;
+package controller;
 
 
 import java.io.IOException;
@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import inventory.EmartDao;
+import dao.EmartDao;
 import inventory.PasswordHashing;
 import model.User;
 
@@ -52,6 +52,7 @@ public class Signin extends HttpServlet {
 			
 			if(role.equalsIgnoreCase("admin"))
 				response.sendRedirect("adminDashboard.jsp");
+			
 			//System.out.println(session.getAttribute("name")+""+session.getAttribute("email"));
 			
 		}

@@ -3,7 +3,7 @@
 
 <%@ page import="java.util.List"%>
 <%@ page import="model.User"%>
-<%@ page import="inventory.EmartDao"%>
+<%@ page import="dao.EmartDao"%>
 
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
@@ -17,9 +17,9 @@
 	
 	<title>Edit User</title>
 	
-	<link rel="icon" type="image/x-icon" href="images/registration.jpg">
+	<link rel="icon" type="image/x-icon" href="/images/registration.jpg">
 	<link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700,800&display=swap" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="login.css">
+	<link rel="stylesheet" type="text/css" href="/css/login.css">
 </head>
 <body>
 	<%
@@ -32,9 +32,9 @@
 	
 	<div class="cont">
     	<div class="form edit">
-      	        <h2>Edit User Details</h2>
+      	    <h2>Edit User Details</h2>
 	        <form action="editform.jsp?role=<%=role %>" name="edit" method="post">
-	                            
+	          
 	          <label>
 	            <span>User Id<span style="color: red">*</span></span>
 	            <input type="text" readonly value="<%=user.getId()%>">
@@ -52,8 +52,7 @@
 	            <input type="password" readonly value="<%=user.getPassword() %>">
 	          </label>
 	          <button type="submit" class="submit" onclick="return check()">Submit</button>
-	          
-	          
+	                  
 	        </form>
 	       </div>
 	
@@ -93,6 +92,11 @@
 			}
 		
 		}
+		function validateEmail(email)
+		{
+			return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);
+		}
+
 		
 	</script>
 </body>

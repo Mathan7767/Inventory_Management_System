@@ -1,5 +1,6 @@
 package model;
 
-public class Supplier extends User{
+public class Supplier extends User
+{
 
 }

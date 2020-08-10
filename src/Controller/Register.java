@@ -1,4 +1,4 @@
-package Controller;
+package controller;
 
 
 import java.io.IOException;
@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import inventory.EmartDao;
+import dao.EmartDao;
 import inventory.PasswordHashing;
 import model.Customer;
 import model.Supplier;
@@ -41,6 +41,7 @@ public class Register extends HttpServlet {
   		String email=request.getParameter("emailid");
   		String password=request.getParameter("password1");
   		String encryptPassword=null;
+  		
   		if(role.equalsIgnoreCase("customer"))
   		{
   			user=new Customer();
@@ -78,16 +79,23 @@ public class Register extends HttpServlet {
   		{
   			status=EmartDao.addSupplier((Supplier)user);
   		}
-  		System.out.println("ehllo");
+  		
   		session.setAttribute("status",status);
-  		System.out.println(status);
+  		//System.out.println(status);
   		
-  		out=response.getWriter();
-  		out.println("<script type=\"text/javascript\">");
-  		out.println("alert('"+status+"');");
-  		out.println("</script>");
-  		
-  		response.sendRedirect("login.jsp");
+  		try
+  		{
+	  		out=response.getWriter();
+	  		out.println("<script type=\"text/javascript\">");
+	  		out.println("alert('"+status+"');");
+	  		out.println("</script>");
+	  		
+	  		response.sendRedirect("login.jsp");
+  		}
+  		catch(IOException e)
+  		{
+  			System.out.println(e);
+  		}
   		
   		
   	}
