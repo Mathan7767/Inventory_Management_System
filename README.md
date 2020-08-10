@@ -41,7 +41,7 @@
       * Required: Enabled https, ability to deploy java webapps
    - **MySQl**
       * Additional information: [MySQL](https://gist.github.com/learncfinaweek/4120988#:~:text=When%20presented%20with%20a%20list,'Next'%20until%20it%20disappears.)
-      * Required: postgreSQL database cluster up and running, user with permissions to create/access databases
+      * Required: MySQL database cluster up and running, user with permissions to create/access databases
 # Working with Eclipse IDE
   Maven Eclipse plugin installation:
   1. Download the maven and unzip into directory
